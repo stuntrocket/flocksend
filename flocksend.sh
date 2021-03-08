@@ -1,8 +1,21 @@
-URL="https://api.flock.com/hooks/sendMessage/a527326b-a864-466b-aa75-ae7492500916" # Webhook
-# $PROCESS 
+#!/bin/bash
+
+START=$(date +%Y-%m-%d-%H-%M)
+HOSTNAME=$(hostname | awk '{print toupper($0)}')
+THIS=$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || echo "$0")
+DIR=$(dirname "${THIS}")
+CONFIG_FILE="./config.conf"
+
+MESSAGE=${1:-"default message"}
+
+. $CONFIG_FILE
+
+
 
 PAYLOAD="{
-  \"flockml\": \"<flockml>Hello! Welcome to <b>Flock</b>!</flockml>\"
+  \"flockml\": \"<flockml>$HOSTNAME - $MESSAGE</flockml>\"
 }"
 
-curl -X POST $URL -H "Content-Type: application/json" -d "$PAYLOAD"
+curl -X POST $FLOCK_WEBHOOK -H "Content-Type: application/json" -d "$PAYLOAD"
+
+exit 0
