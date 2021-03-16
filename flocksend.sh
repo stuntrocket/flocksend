@@ -4,7 +4,7 @@ START=$(date +%Y-%m-%d-%H-%M)
 HOSTNAME=$(hostname | awk '{print toupper($0)}')
 THIS=$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || echo "$0")
 DIR=$(dirname "${THIS}")
-CONFIG_FILE="$DIR/config.conf"
+CONFIG_FILE="$HOME/flockconfig.conf"
 
 MESSAGE=${1:-"default message"}
 
