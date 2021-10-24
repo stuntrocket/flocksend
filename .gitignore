@@ -1,3 +1,5 @@
 /.nova
 /private
 /config.conf
+/flockconfig.conf
+/private
