@@ -1,0 +1,2 @@
+HOSTTOKEN="mbp15"
+FLOCK_WEBHOOK="https://api.flock.com/hooks/sendMessage/XXXX"
